@@ -5,13 +5,18 @@ import { TextInput } from "@repo/ui/textinput";
 import { Button } from "@repo/ui/button";
 import { useState } from "react";
 import { createOnRampTransaction } from "../app/lib/actions/createOnRampTransactions";
+
+
+
 const SUPPORTED_BANKS=[{
     name:'HDFC Bank',
     redirectUrl: "https://netbanking.hdfcbank.com"
 },{
-    name:'AXIS Bank',
+    name:'AXS Bank',
     redirectUrl: "https://www.axisbank.com/"
 }];
+
+
 
 export const AddMoney=()=>{
     const [redirectUrl,setRedirectUrl]=useState(SUPPORTED_BANKS[0]?.redirectUrl);
