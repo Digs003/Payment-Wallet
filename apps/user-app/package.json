@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.0.4",
+    "@marsidev/react-turnstile": "^0.7.1",
     "@repo/db": "*",
     "@repo/store": "*",
     "@repo/ui": "*",

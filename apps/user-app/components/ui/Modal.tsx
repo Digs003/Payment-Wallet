@@ -5,6 +5,11 @@ import { useState } from "react";
 import Cards, { Focused } from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { addNewCard } from "../../app/lib/actions/addNewCard";
+import { Turnstile } from "@marsidev/react-turnstile"
+
+
+const SITE_KEY="0x4AAAAAAAcyqnHEWCQPHJzO";//Replace with your site key
+
 
 interface CardInfo {
   number: string;
@@ -16,7 +21,7 @@ interface CardInfo {
 
 const Modal = () => {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const [token,setToken]=useState<string>("");
   const openModal = () => {
     setModalOpen(true);
   };
@@ -119,11 +124,16 @@ const Modal = () => {
                   name="cvc"
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
-                  placeholder="XXXX"
+                  placeholder="XXX"
                 ></input>
               </div>
+             
             </div>
           </div>
+          <div className="flex justify-center">
+                <Turnstile onSuccess={(token)=>setToken(token)} siteKey={SITE_KEY} />
+          </div>
+          
 
           <div className="flex flex-wrap items-center justify-end p-4 shrink-0 text-blue-gray-500">
             <button
@@ -135,7 +145,8 @@ const Modal = () => {
             <button
               className="middle none center rounded-lg bg-gradient-to-tr from-green-600 to-green-400 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               onClick={async () => {
-                await addNewCard({ cardData: state });
+                const json=await addNewCard({ cardData: state,token:token });
+                window.alert(json.message);
                 closeModal();
                 window.location.reload();
               }}

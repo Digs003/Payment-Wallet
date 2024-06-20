@@ -27,6 +27,7 @@ const BankCard: React.FC<BankCardProps> = ({
     setIsFrontFace((prevIsFrontFace) => !prevIsFrontFace);
   };
 
+
   return (
     <div
       onClick={handleClick}
@@ -85,7 +86,9 @@ const FrontFace: React.FC<FrontFaceProps> = ({
         <div className="h-12 my-2">
           <Image width={1000} height={1000} src="/Card/chip2.png" className="mx-3 my-2 h-9 w-14" alt="chip" />
         </div>
-        <div className="px-3 w-[330px] my-0 font-sans font-bold text-white text-[24px] tracking-[1.7px]">{accountNumber}</div>
+        <div className="px-3 w-[330px] my-0 font-sans font-bold text-white text-[24px] tracking-[1.7px]">
+              {accountNumber.replace(/(\d{4})(?=\d)/g, '$1 ')}
+        </div>        
         <div className="flex flex-row w-[290px] my-[-3px]">
           <div className="px-3 my-0.5 w-[280px] font-sans font-bold text-white text-[15.5px] tracking-[1.2px]">{cardHolderName.toUpperCase()}</div>
           <div className="flex flex-col mt-1">
