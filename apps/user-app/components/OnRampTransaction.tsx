@@ -1,6 +1,5 @@
 import { Card } from "@repo/ui/card"
-import { Center } from "@repo/ui/center"
-
+import {Center} from "@repo/ui/center"
 
 export const OnRampTransactions=({
     transactions

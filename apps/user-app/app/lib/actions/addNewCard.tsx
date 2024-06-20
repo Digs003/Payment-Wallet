@@ -14,7 +14,7 @@ interface CardInfo {
     focus: Focused;
 }
 
-
+const SECRET_KEY=process.env.SECRET_KEY|| "";
 
 function getCardType(number: string): CardsType | "" {
     // Visa
@@ -47,13 +47,26 @@ function getCardType(number: string): CardsType | "" {
     return "";
 }
 
-export async function addNewCard({ cardData }: { cardData: CardInfo }) {
+export async function addNewCard({ cardData,token }: { cardData: CardInfo,token:string }) {
+    let formData = new FormData();
+	formData.append('secret', SECRET_KEY);
+	formData.append('response', token);
+    const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+	const result = await fetch(url, {
+		body: formData,
+		method: 'POST',
+	});
+    const challengeSucceeded = (await result.json()).success;
+
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
         return {
             message: "Unauthorized",
         };
     }
+    if (!challengeSucceeded) {
+        return { message: "Invalid reCAPTCHA token" };
+      }
 
     const cardType = getCardType(cardData.number);
     if (!cardType) {
