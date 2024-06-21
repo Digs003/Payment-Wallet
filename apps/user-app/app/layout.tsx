@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "./providers";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,16 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <Providers>
-        <body className={inter.className} style={{
-          scrollBehavior: "smooth",
-        }}>
-          {/* <AppbarClient /> */}
-          {children}
-        </body>
-      </Providers>
+      <ClerkProvider>
+        <Providers>
+          <body className={inter.className} style={{
+            scrollBehavior: "smooth",
+          }}>
+            {/* <AppbarClient /> */}
+            {children}
+          </body>
+        </Providers>
+      </ClerkProvider>
     </html>
   );
 }

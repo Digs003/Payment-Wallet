@@ -28,6 +28,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@clerk/nextjs": "^5.1.6",
     "@headlessui/react": "^2.0.3",
     "@prisma/client": "^5.14.0",
     "@types/bcrypt": "^5.0.2",

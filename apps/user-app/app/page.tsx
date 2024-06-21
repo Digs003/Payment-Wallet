@@ -1,7 +1,5 @@
-"use server";
-
-import { getServerSession } from "next-auth";
-import { authOptions } from "./lib/auth";
+"use client";
+import { useUser } from "@clerk/nextjs";
 import HomeScreen from "../components/HomeScreen";
 import { PrimaryFeatures } from "../components/AboutSection";
 import { Team } from "../components/TeamsSection";
@@ -10,17 +8,17 @@ import { Footer } from "../components/Footer";
 import { CTA } from "../components/CTA";
 import { Header } from "../components/Header";
 
-export default async function Page() {
-  const session = await getServerSession(authOptions);
+export default function Page() {
+  const { user } = useUser();
 
   return (
     <div className="overflow-x-hidden">
-      <Header session={session} />
-      <HomeScreen session={session} />
+      <Header session={user} />
+      <HomeScreen session={user} />
       <PrimaryFeatures />
       <Team />
       <ReviewSection />
-      <CTA session={session} />
+      <CTA session={user} />
       <Footer />
     </div>
   );
