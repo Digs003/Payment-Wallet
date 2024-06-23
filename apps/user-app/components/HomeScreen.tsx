@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const HomeScreen = ({ session = { user: null } }) => {
+const HomeScreen = ({ session }: { session: any }) => {
   const { user } = session || { user : null };
   {
   return (
