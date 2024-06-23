@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { MenuIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { SignInButton, SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { useState } from "react";
 import NavLink from "./ui/NavLink";
 
@@ -39,6 +40,11 @@ export function Header({ session }: { session: any }) {
       path: "#contact",
     },
   ];
+  const handleSignOut = () => {
+    // Redirect to "/sign-in" after signing out
+    router.push('/sign-in');
+  };
+  const router = useRouter();
   return (
     <>
       <header className="border-b-[0.5px] border-gray-100/20 fixed w-full top-0 z-[99] bg-transparent backdrop-blur-md">
@@ -69,28 +75,11 @@ export function Header({ session }: { session: any }) {
                 </ul>
               </nav>
             </div>
-
-            <div className="flex items-center gap-4">
-              <div className="flex gap-4">
-                <Link
-                  href={user ? "/dashboard" : "/api/auth/signin"}
-                  className="relative ml-5 flex h-9 items-center justify-center sm:px-6 bg-gradient-to-br from-red-400 to-red-500 rounded px-2"
-                >
-                  <span className="relative text-sm font-semibold text-white">
-                    {user ? "Dashboard" : "Sign in"}
-                  </span>
-                </Link>
-              </div>
-
-              <div className="block md:hidden">
-                <button
-                  onClick={handleMenuOpen}
-                  className="p-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium bg-gray-900 text-gray-100 hover:bg-gray-900/80"
-                >
-                  <MenuIcon size={24} />
-                </button>
-              </div>
-            </div>
+            <SignedIn>
+              <button onClick={() => router.push("/dashboard")}>Dashboard</button>
+            </SignedIn>
+            <SignedIn><SignOutButton signOutOptions={{ redirectUrl : "/sign-in"}}/></SignedIn>
+            <SignedOut><SignInButton/></SignedOut>
           </div>
         </div>
       </header>
