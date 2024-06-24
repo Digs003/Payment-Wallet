@@ -17,14 +17,14 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <Providers>
-        <body className={inter.className} style={{
-          scrollBehavior: "smooth",
-        }}>
-          {/* <AppbarClient /> */}
-          {children}
-        </body>
-      </Providers>
+        <Providers>
+          <body className={inter.className} style={{
+            scrollBehavior: "smooth",
+          }}>
+            {/* <AppbarClient /> */}
+            {children}
+          </body>
+        </Providers>
     </html>
   );
 }
