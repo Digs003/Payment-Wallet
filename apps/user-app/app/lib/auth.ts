@@ -2,28 +2,25 @@ import prisma from "@repo/db/client"
 import Credentials from "next-auth/providers/credentials"
 import bcrypt from "bcrypt"
 import GoogleProvider from "next-auth/providers/google";
-import { PrismaClient } from "@prisma/client";
 
 export const authOptions ={
     providers:[
         Credentials({
             name:'Credentials',
             credentials:{
-                name:{label: "Name",type:"text"},
-                phone:{ label: "Phone Number", type:"text", placeholder:"12331313"},
                 password:{ label: "Password", type:"password"},
                 email:{ label: "Email", type:"email",placeholder:"abcd@emaple.com"},
             },
             
             async authorize(credentials:any){
-                if (!credentials.name || !credentials.password || !credentials.email) {
+                if ( !credentials.password || !credentials.email) {
                     console.log('Missing required fields');
                     return null;
                 }
                 const hashedpassword=await bcrypt.hash(credentials.password,10);
                 const existing_user= await prisma.user.findFirst({
                     where:{
-                        name:credentials.name
+                        email:credentials.email
                     }
                 });
                 if(existing_user ){
@@ -34,7 +31,7 @@ export const authOptions ={
                             console.log(existing_user.email);
                             console.log('1');
                             return {
-                                id: existing_user.id.toString(),
+                                id: existing_user.id,
                                 name: existing_user.name,
                                 email: existing_user.email,
                             }
@@ -45,30 +42,9 @@ export const authOptions ={
                     console.log('3');
                     return null;
                 }
-                try {
-                    console.log(credentials.name);
-                    console.log(credentials.email);
-                    const user = await prisma.user.create({
-                        data: {
-                            name:credentials.name,
-                            number: credentials.phone,
-                            password: hashedpassword,
-                            email: credentials.email,
-                        },
-                        
-                    });
-
-                    console.log('4');
-                    return {
-                        id: user.id.toString(),
-                        name: user.name,
-                        email: user.email
-                    }
-                } catch(e) {
-                    console.error(e);
+                else{
+                    return null;
                 }
-                console.log('5');
-                return null;
             },
         }),
         GoogleProvider({
@@ -77,11 +53,21 @@ export const authOptions ={
           }),
     ],
     secret: process.env.JWT_SECRET || "secret",
+    pages:{
+        signIn: 'api/auth/signin',
+    },
     callbacks: {
         async session({token,session}:any){
             session.user.id=token.sub;
             return session;
         },
+        // async redirect({ url, baseUrl }:any) {
+        //     // Allows relative callback URLs
+        //     if (url.startsWith("/")) return `${baseUrl}${url}`
+        //     // Allows callback URLs on the same origin
+        //     else if (new URL(url).origin === baseUrl) return url
+        //     return baseUrl
+        // },
         async signIn({ user, account }: { user: any, account: any }) {
             if (account.provider === "google") {
               const { name, email } = user;
@@ -102,6 +88,7 @@ export const authOptions ={
             }
           
             return user;
-          },
+        },
+        
     }
 }

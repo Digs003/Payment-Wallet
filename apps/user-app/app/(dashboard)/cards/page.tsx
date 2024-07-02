@@ -1,12 +1,11 @@
 import prisma from "@repo/db/client";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../lib/auth";
 import React from "react";
 import { CardsType } from "@prisma/client";
 import Link from "next/link";
 import { ChevronRight, HomeIcon } from "lucide-react";
 import Modal from "../../../components/ui/Modal";
 import AllCards from "../../../components/AllCards";
+import { getUser } from "../../lib/actions/getUser";
 
 interface CardDashboard {
   card_number: string;
@@ -17,10 +16,10 @@ interface CardDashboard {
 }
 
 async function getCardData() {
-  const session = await getServerSession(authOptions);
+  const user=await getUser();
   const cards = await prisma.cards.findMany({
     where: {
-      userId: Number(session?.user?.id),
+      userId: user?.id,
     },
   });
   return cards.map((c: CardDashboard) => ({

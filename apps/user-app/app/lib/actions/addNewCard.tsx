@@ -1,10 +1,9 @@
 "use server";
 
 import prisma from "@repo/db/client";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth";
 import { Focused } from "react-credit-cards-2";
 import { CardsType } from "@prisma/client";
+import { getUser } from "./getUser";
 
 interface CardInfo {
     number: string;
@@ -58,12 +57,13 @@ export async function addNewCard({ cardData,token }: { cardData: CardInfo,token:
 	});
     const challengeSucceeded = (await result.json()).success;
 
-    const session = await getServerSession(authOptions);
-    if (!session?.user?.id) {
+    const user=await getUser();
+    if (!user) {
         return {
             message: "Unauthorized",
         };
     }
+    
     if (!challengeSucceeded) {
         return { message: "Invalid reCAPTCHA token" };
       }
@@ -83,7 +83,7 @@ export async function addNewCard({ cardData,token }: { cardData: CardInfo,token:
                 card_cvc: cardData.cvc,
                 card_name: cardData.name,
                 card_type: cardType,
-                userId: Number(session.user.id),
+                userId: user?.id,
             },
         });
 

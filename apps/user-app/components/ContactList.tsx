@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { User2Icon, XIcon } from 'lucide-react';
 
 interface Contact {
-  id: number;
+  id: string;
   name: string;
   phone: string |null;
 }

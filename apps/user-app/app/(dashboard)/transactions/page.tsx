@@ -10,7 +10,7 @@ async function getUsers(){
   const users=await prisma.user.findMany({
     where:{
       id:{
-        not:Number(session?.user?.id)
+        not:session?.user?.id
       }
     }
   });
