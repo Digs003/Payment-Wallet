@@ -18,7 +18,7 @@ export async function createOnRampTransaction(provider:string,amount:number){
             token:token,
             amount:amount*100,
             startTime:new Date(),
-            userId:Number(session.user.id)
+            userId:session.user.id
         }
     });
     return {

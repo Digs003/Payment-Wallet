@@ -12,8 +12,11 @@ import {
   CreditCardIcon,
   ArrowUpDownIcon,
 } from "lucide-react";
+import { User } from "@prisma/client";
 
-const Sidebar = () => {  
+type myUser = User | null;
+
+const Sidebar = ({ user }: { user: myUser }) => {
   const location = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
@@ -23,8 +26,8 @@ const Sidebar = () => {
   const router = useRouter();
   async function handleLogout() {
     try {
-      signOut();
-      router.push("/api/auth/signin");
+      signOut({ redirect: true, callbackUrl: "/"});
+      //router.push("/api/auth/signin");
     } catch {
       console.log("Failed to logout");
     }
@@ -134,13 +137,13 @@ const Sidebar = () => {
                   >
                     <div className="px-4 py-3" role="none">
                       <p className="text-sm text-white" role="none">
-                        Fetch Name Here
+                        {user?.name}
                       </p>
                       <p
                         className="text-sm font-medium  truncate text-gray-300"
                         role="none"
                       >
-                        Fetch email here
+                        {user?.email}
                       </p>
                     </div>
                     <ul className="p-4" aria-labelledby="user-menu-button">

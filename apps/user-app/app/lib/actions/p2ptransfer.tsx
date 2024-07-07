@@ -25,7 +25,7 @@ export async function p2pTransfer(to:string, amount:number){
         await tx.$queryRaw `SELECT * FROM "Balance" WHERE "userId"=${Number(from)} FOR UPDATE`//Locking
         const fromBalance=await tx.balance.findUnique({
             where:{
-                userId:Number(from)
+                userId:from
             }
         });
         if(!fromBalance || fromBalance.amount<amount){
@@ -33,7 +33,7 @@ export async function p2pTransfer(to:string, amount:number){
         }
         await tx.balance.update({
             where:{
-                userId:Number(from)
+                userId:from
             },
             data:{
                 amount:{
