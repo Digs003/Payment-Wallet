@@ -19,10 +19,32 @@ model User {
 }
 
 model Merchant {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  auth_type AuthType
+  id                String   @id @default(cuid())
+  email             String   @unique
+  name              String?
+  auth_type         AuthType
+  Balance           MerchantBalance[]
+  OnRampTransaction MerchantTransaction[]
+}
+
+model MerchantBalance{
+  id         String   @id @default(cuid())
+  merchantId String   @unique
+  amount     Int
+  locked     Int
+  merchant   Merchant @relation(fields: [merchantId], references: [id])
+}
+
+model MerchantTransaction{
+  id           String     @id @default(cuid())
+  status       OnRampStatus
+  token        String
+  provider     String
+  amount       Int
+  startTime    DateTime
+  merchantId   String
+  merchant     Merchant   @relation(fields: [merchantId], references: [id])
+
 }
 
 model Balance {
@@ -57,7 +79,7 @@ model Cards {
 
 enum AuthType {
   Google
-  Github
+  Apple
 }
 
 enum OnRampStatus {
