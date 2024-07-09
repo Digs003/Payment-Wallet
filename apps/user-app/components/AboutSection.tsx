@@ -139,7 +139,7 @@ const headerAnimation = {
   exit: { opacity: 0, transition: { duration: 0.3 } },
 };
 
-    const maxZIndex = 2147483647;
+const maxZIndex = 2147483647;
 
 const bodyVariantBackwards = {
   opacity: 0.4,
