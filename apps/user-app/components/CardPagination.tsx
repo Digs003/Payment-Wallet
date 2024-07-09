@@ -1,7 +1,7 @@
-'use client'
-import React, { useState } from 'react';
-import BankCard, { BankCardProps } from './CreditCard';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+"use client";
+import React, { useState } from "react";
+import BankCard, { BankCardProps } from "./CreditCard";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export interface CardPaginationProps {
   cards: BankCardProps[];
@@ -16,24 +16,31 @@ const CardPagination: React.FC<CardPaginationProps> = ({ cards }) => {
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + cards.length) % cards.length,
+    );
   };
 
   return (
-    <div className="scale-[85%]">        
-    <div className="flex flex-col items-center">
-      <div className="flex items-center">
-        <button onClick={handlePrevious} className= "bg-neutral-700 hover:bg-neutral-600 rounded-full p-2 mr-2">
-          <ArrowLeft className="w-6 h-6 text-white font-bold" />
-        </button>
-        <BankCard {...cards[currentIndex]} />
-        <button onClick={handleNext} className="bg-neutral-700 hover:bg-neutral-600 rounded-full p-2 ml-2">
-          <ArrowRight className="w-6 h-6 text-white" />
-        </button>
+    <div className="scale-[85%]">
+      <div className="flex flex-col items-center">
+        <div className="flex items-center">
+          <button
+            onClick={handlePrevious}
+            className="bg-neutral-700 hover:bg-neutral-600 rounded-full p-2 mr-2"
+          >
+            <ArrowLeft className="w-6 h-6 text-white font-bold" />
+          </button>
+          <BankCard {...cards[currentIndex]} />
+          <button
+            onClick={handleNext}
+            className="bg-neutral-700 hover:bg-neutral-600 rounded-full p-2 ml-2"
+          >
+            <ArrowRight className="w-6 h-6 text-white" />
+          </button>
+        </div>
       </div>
     </div>
-    </div>
-
   );
 };
 

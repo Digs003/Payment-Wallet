@@ -26,7 +26,7 @@ const Sidebar = ({ user }: { user: myUser }) => {
   const router = useRouter();
   async function handleLogout() {
     try {
-      signOut({ redirect: true, callbackUrl: "/"});
+      signOut({ redirect: true, callbackUrl: "/" });
       //router.push("/api/auth/signin");
     } catch {
       console.log("Failed to logout");

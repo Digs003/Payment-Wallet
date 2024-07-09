@@ -100,7 +100,6 @@ export function Header({ session }: { session: any }) {
           style={{ boxShadow: "inset 0 -10px 10px -10px #7b7575b3" }}
         >
           {links.map((link: any, index: any) => (
-
             <NavLink item={link} key={index} handleMenuOpen={handleMenuOpen} />
           ))}
         </div>

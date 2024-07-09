@@ -16,7 +16,7 @@ interface CardDashboard {
 }
 
 async function getCardData() {
-  const user=await getUser();
+  const user = await getUser();
   const cards = await prisma.cards.findMany({
     where: {
       userId: user?.id,

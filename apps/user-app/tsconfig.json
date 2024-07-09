@@ -12,7 +12,8 @@
     "next.config.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
-, "components/ReviewSection.tsx"  ],
+    ".next/types/**/*.ts",
+    "components/ReviewSection.tsx"
+  ],
   "exclude": ["node_modules"]
 }

@@ -30,12 +30,12 @@ const P2PTransfer: React.FC<P2PTransferProps> = ({
   const [selectedAccount, setSelectedAccount] = useState<string>("");
   const [amount, setAmount] = useState<number>(0);
   const [transactionType, setTransactionType] = useState<"Send" | "request">(
-    "Send"
+    "Send",
   );
 
   const handleTransfer = () => {
     console.log(
-      `Transaction Type: ${transactionType}, Amount: ${amount}, Selected Account: ${selectedAccount}`
+      `Transaction Type: ${transactionType}, Amount: ${amount}, Selected Account: ${selectedAccount}`,
     );
   };
 

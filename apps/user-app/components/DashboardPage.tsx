@@ -9,8 +9,8 @@ import Image from "next/image";
 import { ArrowRight, ArrowUp, DollarSign, Send } from "lucide-react";
 import { User } from "@prisma/client";
 
-interface DashboardPageProps{
-    user: User | null;
+interface DashboardPageProps {
+  user: User | null;
 }
 
 const transactions: Transaction[] = [
@@ -76,8 +76,6 @@ const transactions: Transaction[] = [
   },
 ];
 
-
-
 const p2pTransfers: P2PTransfer[] = [
   {
     id: 1,
@@ -122,24 +120,23 @@ const p2pTransfers: P2PTransfer[] = [
   // Add more transfers as needed
 ];
 
-
-
-const  DashboardPage:  React.FC<DashboardPageProps> = ({user}) => {
+const DashboardPage: React.FC<DashboardPageProps> = ({ user }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const filteredTransactions =
     selectedCategory === "All"
       ? transactions
       : transactions.filter(
-          (transaction) => transaction.category === selectedCategory
+          (transaction) => transaction.category === selectedCategory,
         );
 
   const categories = Array.from(
-    new Set(transactions.map((transaction) => transaction.category))
+    new Set(transactions.map((transaction) => transaction.category)),
   );
   categories.unshift("All");
 
-  {/*const expenditureData = useMemo(() => {
+  {
+    /*const expenditureData = useMemo(() => {
     return transactions
       .filter((transaction) => transaction.amount.startsWith("-"))
       .reduce(
@@ -163,8 +160,8 @@ const  DashboardPage:  React.FC<DashboardPageProps> = ({user}) => {
       return acc;
     },
     {} as { [key: string]: string }
-  );*/}
-  
+  );*/
+  }
 
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
@@ -177,7 +174,6 @@ const  DashboardPage:  React.FC<DashboardPageProps> = ({user}) => {
   } else {
     greeting = "Good evening";
   }
-
 
   const dynamicGreeting = `${greeting}, ${user?.name}. 👋`;
 

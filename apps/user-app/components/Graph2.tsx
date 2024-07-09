@@ -18,7 +18,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 interface DataEntry {
@@ -46,7 +46,7 @@ const data: DataEntry[] = [
 
 const BarChart = () => {
   const [selectedYear, setSelectedYear] = useState<string>(
-    new Date().getFullYear().toString()
+    new Date().getFullYear().toString(),
   );
 
   const months = [
@@ -64,7 +64,7 @@ const BarChart = () => {
     "Dec",
   ];
   const years = Array.from(
-    new Set(data.map((entry) => new Date(entry.date).getFullYear()))
+    new Set(data.map((entry) => new Date(entry.date).getFullYear())),
   ).sort();
 
   const aggregateData = (year: string) => {

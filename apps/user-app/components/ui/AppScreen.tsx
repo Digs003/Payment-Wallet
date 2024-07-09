@@ -1,5 +1,5 @@
-import React, { FC, ReactNode, forwardRef } from 'react';
-import clsx from 'clsx';
+import React, { FC, ReactNode, forwardRef } from "react";
+import clsx from "clsx";
 
 interface LogoProps {
   className?: string;
@@ -7,7 +7,12 @@ interface LogoProps {
 
 const Logo: FC<LogoProps> = ({ className }) => {
   return (
-    <svg viewBox="0 0 79 24" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 79 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <path
         d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12ZM2.4 12a9.004 9.004 0 0 0 6.055 8.507c1.565.542 2.945-.85 2.945-2.507V6c0-1.657-1.38-3.049-2.945-2.507A9.004 9.004 0 0 0 2.4 12Z"
         fill="#06B6D4"
@@ -26,7 +31,12 @@ interface MenuIconProps {
 
 const MenuIcon: FC<MenuIconProps> = ({ className }) => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <path
         d="M5 6h14M5 18h14M5 12h14"
         stroke="#fff"
@@ -44,7 +54,12 @@ interface UserIconProps {
 
 const UserIcon: FC<UserIconProps> = ({ className }) => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+      className={className}
+    >
       <path
         d="M15 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.696 19h10.608c1.175 0 2.08-.935 1.532-1.897C18.028 15.69 16.187 14 12 14s-6.028 1.689-6.836 3.103C4.616 18.065 5.521 19 6.696 19Z"
         stroke="#fff"
@@ -63,7 +78,7 @@ interface AppScreenProps {
 
 export const AppScreen: FC<AppScreenProps> = ({ children, className }) => {
   return (
-    <div className={clsx('flex flex-col', className)}>
+    <div className={clsx("flex flex-col", className)}>
       <div className="flex justify-between px-4 pt-4">
         <MenuIcon className="h-6 w-6 flex-none" />
         <Logo className="h-6 flex-none" />
@@ -85,7 +100,7 @@ export const AppScreenHeader = forwardRef<HTMLDivElement, AppScreenHeaderProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 interface AppScreenTitleProps {
@@ -99,22 +114,23 @@ export const AppScreenTitle = forwardRef<HTMLDivElement, AppScreenTitleProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 interface AppScreenSubtitleProps {
   children: ReactNode;
 }
 
-export const AppScreenSubtitle = forwardRef<HTMLDivElement, AppScreenSubtitleProps>(
-  ({ children }, ref) => {
-    return (
-      <div ref={ref} className="text-sm text-gray-500">
-        {children}
-      </div>
-    );
-  }
-);
+export const AppScreenSubtitle = forwardRef<
+  HTMLDivElement,
+  AppScreenSubtitleProps
+>(({ children }, ref) => {
+  return (
+    <div ref={ref} className="text-sm text-gray-500">
+      {children}
+    </div>
+  );
+});
 
 interface AppScreenBodyProps {
   children: ReactNode;
@@ -126,10 +142,10 @@ export const AppScreenBody = forwardRef<HTMLDivElement, AppScreenBodyProps>(
     return (
       <div
         ref={ref}
-        className={clsx('mt-6 flex-auto rounded-t-2xl bg-white', className)}
+        className={clsx("mt-6 flex-auto rounded-t-2xl bg-white", className)}
       >
         {children}
       </div>
     );
-  }
+  },
 );

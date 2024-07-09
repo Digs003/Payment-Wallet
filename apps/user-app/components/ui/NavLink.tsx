@@ -1,18 +1,14 @@
-
-
 import Link from "next/link";
 
-
 const NavLink = ({ item, handleMenuOpen }: any) => {
- 
   // If the user clicks on a link, the menu should close and the link should have a bg color
   const handleClick = () => {
     handleMenuOpen();
-  }; 
+  };
 
   // It goes to a section not a page
   const pathName = window.location.hash;
-  
+
   return (
     <Link
       onClick={handleClick}

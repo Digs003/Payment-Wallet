@@ -2,7 +2,8 @@ export const TeamMembers = [
   {
     name: "Diganta Mandal ",
     github: "https://github.com/Digs003",
-    linkedin: "https://www.linkedin.com/in/diganta-mandal-4294a324a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    linkedin:
+      "https://www.linkedin.com/in/diganta-mandal-4294a324a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     imageUrl: "/Team/dig.webp",
   },
   {
@@ -20,7 +21,8 @@ export const TeamMembers = [
   {
     name: "Aritra Maji",
     github: "https://github.com/Sukhoi9128",
-    linkedin: "https://www.linkedin.com/in/aritra-maji-444571256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    linkedin:
+      "https://www.linkedin.com/in/aritra-maji-444571256?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     imageUrl: "/Team/aritra.webp",
-  }
+  },
 ];

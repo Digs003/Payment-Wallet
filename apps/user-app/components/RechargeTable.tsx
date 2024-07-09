@@ -1,6 +1,6 @@
-'use client'
-import React from 'react';
-import { format, parseISO } from 'date-fns';
+"use client";
+import React from "react";
+import { format, parseISO } from "date-fns";
 
 interface RechargeTransaction {
   id: number;
@@ -20,7 +20,9 @@ const RecentRecharges: React.FC<RecentRechargesProps> = ({ transactions }) => {
     <div className="h-[320px] w-full bg-cardblack text-white py-1.5 rounded-xl mt-2">
       <div className="w-full mx-auto">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-[20px] font-bold font-sans pl-2">Recent Recharges</h1>
+          <h1 className="text-[20px] font-bold font-sans pl-2">
+            Recent Recharges
+          </h1>
         </div>
         <div className="overflow-x-hidden h-[250px]">
           <table className="w-full text-left table-auto">
@@ -34,22 +36,30 @@ const RecentRecharges: React.FC<RecentRechargesProps> = ({ transactions }) => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map(transaction => {
+              {transactions.map((transaction) => {
                 const parsedDate = parseISO(transaction.date);
-                const date = format(parsedDate, 'MMM d, yyyy');
-                const time = format(parsedDate, 'hh:mm a');
+                const date = format(parsedDate, "MMM d, yyyy");
+                const time = format(parsedDate, "hh:mm a");
 
                 return (
                   <tr key={transaction.id} className="border-t border-gray-700">
                     <td className="px-4 py-1 flex items-center">
-                      <span className="mr-2 font-sans font-semibold text-[15px]">{transaction.cardHolderName}</span>
+                      <span className="mr-2 font-sans font-semibold text-[15px]">
+                        {transaction.cardHolderName}
+                      </span>
                     </td>
                     <td className="px-4 py-1 font-sans font-semibold text-[15px] text-green-400">
                       +₹{transaction.amount.toFixed(2)}
                     </td>
-                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">{date}</td>
-                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">{time}</td>
-                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">{transaction.cardType}</td>
+                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">
+                      {date}
+                    </td>
+                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">
+                      {time}
+                    </td>
+                    <td className="px-4 py-1 font-sans font-semibold text-[15px]">
+                      {transaction.cardType}
+                    </td>
                   </tr>
                 );
               })}

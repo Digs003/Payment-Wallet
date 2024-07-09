@@ -24,7 +24,13 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
-  const categories = ["Subscriptions", "Deposit", "Groceries", "Income", "Food and dining"]
+  const categories = [
+    "Subscriptions",
+    "Deposit",
+    "Groceries",
+    "Income",
+    "Food and dining",
+  ];
   categories.unshift("All");
 
   return (

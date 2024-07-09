@@ -1,4 +1,4 @@
-export function LaravelLogo(props:any) {
+export function LaravelLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path
@@ -10,7 +10,7 @@ export function LaravelLogo(props:any) {
   );
 }
 
-export function TupleLogo(props:any) {
+export function TupleLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path
@@ -22,7 +22,7 @@ export function TupleLogo(props:any) {
   );
 }
 
-export function TransistorLogo(props:any) {
+export function TransistorLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path d="M20 32c-6.617 0-12-5.383-12-12S13.383 8 20 8s12 5.383 12 12-5.383 12-12 12Zm0-22.4C14.267 9.6 9.6 14.266 9.6 20S14.267 30.4 20 30.4c5.734 0 10.4-4.666 10.4-10.4S25.734 9.6 20 9.6Z" />
@@ -31,7 +31,7 @@ export function TransistorLogo(props:any) {
   );
 }
 
-export function DiageoLogo(props:any) {
+export function DiageoLogo(props: any) {
   return (
     <svg
       viewBox="0 0 40 40"
@@ -49,7 +49,7 @@ export function DiageoLogo(props:any) {
   );
 }
 
-export function StaticKitLogo(props:any) {
+export function StaticKitLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path d="m26.068 10.555-11.49 13.089L12 21.089 23.489 8l2.58 2.555ZM28 18.91 16.512 32l-2.579-2.555 11.489-13.089L28 18.911Z" />
@@ -57,7 +57,7 @@ export function StaticKitLogo(props:any) {
   );
 }
 
-export function StatamicLogo(props:any) {
+export function StatamicLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path
@@ -69,7 +69,7 @@ export function StatamicLogo(props:any) {
   );
 }
 
-export function MirageLogo(props:any) {
+export function MirageLogo(props: any) {
   return (
     <svg viewBox="0 0 40 40" fill="#fff" aria-hidden="true" {...props}>
       <path
@@ -82,7 +82,7 @@ export function MirageLogo(props:any) {
   );
 }
 
-export function ReversableLogo(props:any) {
+export function ReversableLogo(props: any) {
   return (
     <svg
       viewBox="0 0 40 40"

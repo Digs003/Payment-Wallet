@@ -1,6 +1,5 @@
 import { useId } from "react";
 
-
 export function CircleBackground({
   color,
   width = 558,

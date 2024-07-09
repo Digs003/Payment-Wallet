@@ -25,14 +25,17 @@ export function CTA({ session }: { session: any }) {
               }}
             >
               <h1 className="text-3xl clash sm:text-6xl xl:text-7xl font-bold tracking-tight mb-8">
-                Save your <span className="bg-gradient-to-b from-zinc-100 clash to-red-400 bg-clip-text text-transparent">Finances</span>
+                Save your{" "}
+                <span className="bg-gradient-to-b from-zinc-100 clash to-red-400 bg-clip-text text-transparent">
+                  Finances
+                </span>
               </h1>
               <Link
-                  className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm bg-gradient-to-bl from-red-500 to-[#de122e] text-gray-100 hover:bg-gradient-to-tr duration-300 ease-in-out transition-all h-11 px-8 font-semibold"
-                  href={user ? "/dashboard" : "/api/auth/signin"}
-                >
-                  Get Started
-                </Link>
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm bg-gradient-to-bl from-red-500 to-[#de122e] text-gray-100 hover:bg-gradient-to-tr duration-300 ease-in-out transition-all h-11 px-8 font-semibold"
+                href={user ? "/dashboard" : "/api/auth/signin"}
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         </div>

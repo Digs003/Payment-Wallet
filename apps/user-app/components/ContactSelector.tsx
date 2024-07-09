@@ -1,6 +1,6 @@
-'use client'
-import React, { useState, useRef, useEffect } from 'react';
-import 'tailwindcss/tailwind.css';
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import "tailwindcss/tailwind.css";
 
 interface Contact {
   id: number;
@@ -14,27 +14,32 @@ interface ContactSelectorProps {
 
 const ContactSelector: React.FC<ContactSelectorProps> = ({ contacts }) => {
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const filteredContacts = query === ''
-    ? contacts
-    : contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(query.toLowerCase()) ||
-        contact.phone.includes(query)
-      );
+  const filteredContacts =
+    query === ""
+      ? contacts
+      : contacts.filter(
+          (contact) =>
+            contact.name.toLowerCase().includes(query.toLowerCase()) ||
+            contact.phone.includes(query),
+        );
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target as Node)
+    ) {
       setDropdownOpen(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -45,13 +50,27 @@ const ContactSelector: React.FC<ContactSelectorProps> = ({ contacts }) => {
           className="relative w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center"
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
-          <svg className="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <svg
+            className="w-10 h-10 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
 
         {dropdownOpen && (
-          <div ref={dropdownRef} className="absolute mt-2 w-72 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+          <div
+            ref={dropdownRef}
+            className="absolute mt-2 w-72 bg-white border border-gray-300 rounded-md shadow-lg z-10"
+          >
             <input
               className="w-full border-none py-2 px-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0"
               placeholder="Search..."
@@ -67,7 +86,9 @@ const ContactSelector: React.FC<ContactSelectorProps> = ({ contacts }) => {
                     setDropdownOpen(false);
                   }}
                 >
-                  <span className="block truncate">{contact.name} - {contact.phone}</span>
+                  <span className="block truncate">
+                    {contact.name} - {contact.phone}
+                  </span>
                 </li>
               ))}
             </ul>

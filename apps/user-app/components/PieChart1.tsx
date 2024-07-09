@@ -1,7 +1,7 @@
-'use client';
-import React from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
+"use client";
+import React from "react";
+import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -16,7 +16,7 @@ const PieChart: React.FC<PieChartProps> = ({ data, colors }) => {
     datasets: [
       {
         data: Object.values(data),
-        backgroundColor: Object.keys(data).map(category => colors[category]),
+        backgroundColor: Object.keys(data).map((category) => colors[category]),
         borderWidth: 1,
       },
     ],
@@ -25,17 +25,19 @@ const PieChart: React.FC<PieChartProps> = ({ data, colors }) => {
   const options = {
     plugins: {
       legend: {
-        display: false, 
+        display: false,
       },
       tooltip: {
-        enabled: true, 
+        enabled: true,
       },
     },
   };
 
   return (
     <div className="w-[270px] mx-auto items-center">
-      <h2 className="text-center text-[18px] font-bold font-sans mb-2">Expenditure by Category</h2>
+      <h2 className="text-center text-[18px] font-bold font-sans mb-2">
+        Expenditure by Category
+      </h2>
       <Pie data={chartData} options={options} height={500} width={500} />
     </div>
   );

@@ -18,9 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
-        <body className={inter.className} style={{
-          scrollBehavior: "smooth",
-        }}>
+        <body
+          className={inter.className}
+          style={{
+            scrollBehavior: "smooth",
+          }}
+        >
           {/* <AppbarClient /> */}
           {children}
         </body>

@@ -139,7 +139,7 @@ const headerAnimation = {
   exit: { opacity: 0, transition: { duration: 0.3 } },
 };
 
-const maxZIndex = 2147483647;
+ const maxZIndex = 2147483647;
 
 const bodyVariantBackwards = {
   opacity: 0.4,
@@ -307,7 +307,7 @@ function StocksScreen({
                     "text-xs leading-5",
                     stock.change.startsWith("+")
                       ? "text-cyan-500"
-                      : "text-gray-500"
+                      : "text-gray-500",
                   )}
                 >
                   {stock.change}
@@ -402,7 +402,7 @@ function FeaturesDesktop() {
       setChangeCount((changeCount) => changeCount + 1);
     },
     100,
-    { leading: true }
+    { leading: true },
   );
 
   return (
@@ -464,7 +464,7 @@ function FeaturesDesktop() {
                       custom={{ isForwards, changeCount }}
                     />
                   </Tab.Panel>
-                ) : null
+                ) : null,
               )}
             </AnimatePresence>
           </Tab.Panels>
@@ -485,7 +485,7 @@ function FeaturesMobile() {
         for (let entry of entries) {
           if (entry.isIntersecting) {
             setActiveIndex(
-              slideRefs.current.indexOf(entry.target as HTMLDivElement)
+              slideRefs.current.indexOf(entry.target as HTMLDivElement),
             );
             break;
           }
@@ -494,7 +494,7 @@ function FeaturesMobile() {
       {
         root: slideContainerRef.current,
         threshold: 0.6,
-      }
+      },
     );
 
     for (let slide of slideRefs.current) {
@@ -552,7 +552,7 @@ function FeaturesMobile() {
             key={featureIndex}
             className={clsx(
               "relative h-0.5 w-4 rounded-full",
-              featureIndex === activeIndex ? "bg-gray-300" : "bg-gray-500"
+              featureIndex === activeIndex ? "bg-gray-300" : "bg-gray-500",
             )}
             aria-label={`Go to slide ${featureIndex + 1}`}
             onClick={() => {

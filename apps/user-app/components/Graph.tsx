@@ -1,7 +1,7 @@
-'use client'
-import React from 'react';
-import Chart from 'react-apexcharts';
-import { ApexOptions } from 'apexcharts';
+"use client";
+import React from "react";
+import Chart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 
 interface Series {
   name: string;
@@ -32,7 +32,7 @@ const Graph: React.FC = () => {
         type: "area",
         height: 700,
         width: 1200,
-        background: '#1E1E1E', // Dark background for dark mode
+        background: "#1E1E1E", // Dark background for dark mode
         toolbar: {
           show: true,
           tools: {
@@ -45,7 +45,7 @@ const Graph: React.FC = () => {
             reset: true,
             customIcons: [],
           },
-          autoSelected: 'zoom',
+          autoSelected: "zoom",
         },
       },
       fill: {
@@ -60,7 +60,7 @@ const Graph: React.FC = () => {
         colors: ["#1CAC78"],
       },
       tooltip: {
-        theme: 'dark', // Dark mode tooltip
+        theme: "dark", // Dark mode tooltip
         x: {
           format: "dd/MM/yy HH:mm",
         },
@@ -81,7 +81,7 @@ const Graph: React.FC = () => {
         ],
         labels: {
           style: {
-            colors: '#ffffff', // White labels for dark mode
+            colors: "#ffffff", // White labels for dark mode
           },
         },
       },
@@ -89,19 +89,25 @@ const Graph: React.FC = () => {
         show: true,
         labels: {
           style: {
-            colors: '#ffffff', // White labels for dark mode
+            colors: "#ffffff", // White labels for dark mode
           },
         },
       },
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
   };
 
   return (
     <div className="CustomerReview bg-cardblack rounded-2xl p-5 box-border w-full max-w-full">
-      <Chart options={data.options} series={data.series} type="area" height={280} width={660}/>
+      <Chart
+        options={data.options}
+        series={data.series}
+        type="area"
+        height={280}
+        width={660}
+      />
       <style jsx global>{`
         .apexcharts-menu-item {
           color: black !important; /* Menu bar text color */
